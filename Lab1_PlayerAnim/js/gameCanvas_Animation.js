@@ -1,5 +1,4 @@
-export { AnimationType as default };
-class AnimationType {
+export default class AnimationType {
     constructor(akvOptionsIn) {
         this.vFrames = []; // Współrzędne klatek animacji
         const akvDefaults = {
@@ -33,18 +32,18 @@ class AnimationType {
     }
     // Rysowanie aktualnej klatki
     draw(x, y, nWidth, nHeight, bFlipH) {
-        const { kvOptions: { context: aContext, nCurrentFrame: anCurrrentFrame } } = this;
-        const aFrame = this.vFrames[anCurrrentFrame];
+        const { kvOptions: { context: aContext, nCurrentFrame }, vFrames } = this;
+        const aFrame = vFrames[nCurrentFrame];
         if (!aFrame || !aContext || !this.Image.complete) {
             return; // Jeśli coś jest niegotowe, nie rysujemy
         }
         if (bFlipH) {
             aContext.save(); // Zachowaj bieżący stan kontekstu
             aContext.scale(-1, 1); // Odbij obraz w poziomie
-            aContext.translate(-nWidth + 1, 0); // Dostosuj pozycję
+            aContext.translate(-x - nWidth, 0); // Dostosuj pozycję
             // Rysuj aktualną klatkę
             aContext.drawImage(this.Image, aFrame.x, aFrame.y, nWidth, nHeight, -x, y, nWidth, nHeight);
-            aContext.restore();
+            aContext.restore(); // Przywróć stan kontekstu
         }
         else {
             // Rysowanie bez odbicia
