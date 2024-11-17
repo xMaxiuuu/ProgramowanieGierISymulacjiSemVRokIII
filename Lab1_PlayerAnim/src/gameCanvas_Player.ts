@@ -1,14 +1,17 @@
 import AnimationType from "./gameCanvas_Animation.js";
 
-export type MyPlayerOptions = {
-    x: number;
-    y: number;
-    nWidth: number;
-    nHeight: number;
-    bFlipH: boolean;
-};
+export { PlayerType as default }
 
-export default class PlayerType {
+type MyPlayerOptions = {
+    x: number,
+    y: number,
+    nWidth: number,
+    nHeight: number,
+    bFlipH: boolean
+}
+
+class PlayerType {
+
     kvOptions: MyPlayerOptions;
     hAnimation?: number;
     AnimationCurrent?: AnimationType;
@@ -26,30 +29,29 @@ export default class PlayerType {
 
     // Ustawienie animacji
     setAnimation(aAnimation: AnimationType) {
+
         if (this.hAnimation) {
             clearInterval(this.hAnimation); // Wyczyszczenie poprzedniej animacji
-            this.hAnimation = void 0;
+            this.hAnimation = (void 0);
         }
 
         this.AnimationCurrent = aAnimation;
 
         const anNumFrames = aAnimation.getNumFrames(); // Pobranie liczby klatek
 
-        if (anNumFrames > 1) {
+        if (1 < anNumFrames) {
             // Jeśli animacja ma więcej niż jedną klatkę
             this.hAnimation = setInterval(() => {
-                const nextFrameIndex =
-                    (aAnimation.getCurrentFrameIndex() + 1) % anNumFrames;
-                aAnimation.setCurrentFrameIndex(nextFrameIndex);
-            }, aAnimation.getInterval());
-        } else {
+                aAnimation.setCurrentFrameIndex((aAnimation.getCurrentFrameIndex() + 1) % anNumFrames)
+            }, aAnimation.getInterval())
+        }else {
             // Jeśli animacja ma tylko jedną klatkę
             aAnimation.setCurrentFrameIndex(0);
         }
     }
 
     // Rysowanie obiektu
-    draw(context: CanvasRenderingContext2D) {
+    draw() {
         if (!this.AnimationCurrent) {
             return; // Jeśli brak animacji, zakończ
         }

@@ -1,9 +1,11 @@
-export type MyPoint = {
+export { AnimationType as default }
+
+type MyPoint = {
     x: number;
     y: number;
 };
 
-export type MyAnimationOptions = {
+type MyAnimationOptions = {
     strURL: string;
     context: CanvasRenderingContext2D;
     nCurrentFrame: number;
@@ -15,7 +17,7 @@ type SkipByKeys<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
 type OnlyOptional<T, K extends keyof T> = Partial<Pick<T, K>> & Required<SkipByKeys<T, K>>;
 type OnlyRequired<T, K extends keyof T> = Required<Pick<T, K>> & Partial<SkipByKeys<T, K>>;
 
-export default class AnimationType {
+class AnimationType {
     vFrames: MyPoint[] = []; // Współrzędne klatek animacji
     kvOptions: MyAnimationOptions; // Opcje animacji
     Image: HTMLImageElement; // Obraz z animacją
@@ -38,7 +40,7 @@ export default class AnimationType {
     }
 
     // Pobierz liczbę klatek
-    getNumFrames() {
+    getNumFrames(): number {
         return this.vFrames.length;
     }
 
@@ -59,8 +61,8 @@ export default class AnimationType {
 
     // Rysowanie aktualnej klatki
     draw(x: number, y: number, nWidth: number, nHeight: number, bFlipH: boolean) {
-        const { kvOptions: { context: aContext, nCurrentFrame }, vFrames } = this;
-        const aFrame: MyPoint = vFrames[nCurrentFrame];
+        const { kvOptions: { context: aContext, nCurrentFrame: anCurrrentFrame } } = this;
+        const aFrame: MyPoint = this.vFrames[anCurrrentFrame];
 
         if (!aFrame || !aContext || !this.Image.complete) {
             return; // Jeśli coś jest niegotowe, nie rysujemy
@@ -69,35 +71,14 @@ export default class AnimationType {
         if (bFlipH) {
             aContext.save(); // Zachowaj bieżący stan kontekstu
             aContext.scale(-1, 1); // Odbij obraz w poziomie
-            aContext.translate(-x - nWidth, 0); // Dostosuj pozycję
+            aContext.translate(-nWidth + 1, 0); // Dostosuj pozycję
 
             // Rysuj aktualną klatkę
-            aContext.drawImage(
-                this.Image,
-                aFrame.x,
-                aFrame.y,
-                nWidth,
-                nHeight,
-                -x,
-                y,
-                nWidth,
-                nHeight
-            );
-
-            aContext.restore(); // Przywróć stan kontekstu
+            aContext.drawImage(this.Image, aFrame.x, aFrame.y, nWidth, nHeight, -x, y, nWidth, nHeight);
+            aContext.restore()
         } else {
             // Rysowanie bez odbicia
-            aContext.drawImage(
-                this.Image,
-                aFrame.x,
-                aFrame.y,
-                nWidth,
-                nHeight,
-                x,
-                y,
-                nWidth,
-                nHeight
-            );
+            aContext.drawImage(this.Image, aFrame.x, aFrame.y, nWidth, nHeight, x, y, nWidth, nHeight);
         }
     }
 }
