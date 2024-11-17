@@ -1,6 +1,8 @@
 import AnimationType from "./gameCanvas_Animation.js";
 
-export type MyPlayerOptions = {
+export { PlayerType as default }
+
+type MyPlayerOptions = {
     x: number;
     y: number;
     nWidth: number;
@@ -8,7 +10,8 @@ export type MyPlayerOptions = {
     bFlipH: boolean;
 };
 
-export default class PlayerType {
+class PlayerType {
+
     kvOptions: MyPlayerOptions;
     hAnimation?: number;
     AnimationCurrent?: AnimationType;
@@ -24,39 +27,32 @@ export default class PlayerType {
         this.kvOptions = { ...akvDefaults, ...akvOptionsIn };
     }
 
-    // Ustawienie animacji
     setAnimation(aAnimation: AnimationType) {
         if (this.hAnimation) {
             clearInterval(this.hAnimation); // Wyczyszczenie poprzedniej animacji
-            this.hAnimation = void 0;
+            this.hAnimation = (void 0)
         }
-
         this.AnimationCurrent = aAnimation;
 
         const anNumFrames = aAnimation.getNumFrames(); // Pobranie liczby klatek
 
-        if (anNumFrames > 1) {
-            // Jeśli animacja ma więcej niż jedną klatkę
+        if (1 < anNumFrames) {
             this.hAnimation = setInterval(() => {
-                const nextFrameIndex =
-                    (aAnimation.getCurrentFrameIndex() + 1) % anNumFrames;
-                aAnimation.setCurrentFrameIndex(nextFrameIndex);
-            }, aAnimation.getInterval());
+            aAnimation.setCurrentFrameIndex((aAnimation.getCurrentFrameIndex() + 1) % anNumFrames)
+            //aAnimation.nextFrameIndex() - w kodzie dr bylo
+        }, aAnimation.getInterval())
         } else {
-            // Jeśli animacja ma tylko jedną klatkę
             aAnimation.setCurrentFrameIndex(0);
         }
     }
 
-    // Rysowanie obiektu
-    draw(context: CanvasRenderingContext2D) {
+    draw() {
         if (!this.AnimationCurrent) {
-            return; // Jeśli brak animacji, zakończ
+            return
         }
     
         const { x, y, nWidth, nHeight, bFlipH } = this.kvOptions;
-    
-        // Rysowanie aktualnej klatki animacji
-        this.AnimationCurrent.draw(x, y, nWidth, nHeight, bFlipH);
+
+        this.AnimationCurrent.draw(x, y, nWidth, nHeight, bFlipH)
     }
 }
