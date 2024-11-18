@@ -41,17 +41,22 @@ function onReady() {
         nRate: 350,
     });
     aAnimBackground.appendFrame(0, 0);
-    aAnimStand.appendFrame(0, 0); // Klatka 1
-    aAnimStand.appendFrame(98, 0); // Klatka 2
-    aAnimStand.appendFrame(196, 0); // Klatka 3
-    aAnimStand.appendFrame(294, 0); // Klatka 4
-    aAnimStand.appendFrame(392, 0); // Klatka 5
-    aAnimStand.appendFrame(490, 0); // Klatka 6
-    aAnimStandEnemy.appendFrame(1073, 308);
-    aAnimStandEnemy.appendFrame(1193, 308);
-    aAnimStandEnemy.appendFrame(1323, 308);
-    aAnimStandEnemy.appendFrame(1473, 308);
-    aAnimStandEnemy.appendFrame(1623, 308);
+    aAnimStand.appendFrame(0, 0);
+    aAnimStand.appendFrame(80, 0);
+    aAnimStand.appendFrame(160, 0);
+    aAnimStand.appendFrame(240, 0);
+    aAnimStand.appendFrame(320, 0);
+    aAnimStand.appendFrame(400, 0);
+    aAnimStand.appendFrame(480, 0);
+    aAnimStand.appendFrame(560, 0);
+    aAnimStandEnemy.appendFrame(0, 0);
+    aAnimStandEnemy.appendFrame(80, 0);
+    aAnimStandEnemy.appendFrame(160, 0);
+    aAnimStandEnemy.appendFrame(240, 0);
+    aAnimStandEnemy.appendFrame(320, 0);
+    aAnimStandEnemy.appendFrame(400, 0);
+    aAnimStandEnemy.appendFrame(480, 0);
+    aAnimStandEnemy.appendFrame(560, 0);
     aBackground.setAnimation(aAnimBackground);
     aPlayer.setAnimation(aAnimStand);
     aEnemy.setAnimation(aAnimStandEnemy);
