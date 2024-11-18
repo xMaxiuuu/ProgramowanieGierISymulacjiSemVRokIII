@@ -34,7 +34,7 @@ function onReady() {
     aEnemy = new PlayerType({
         x: 400,
         y:140,
-        nWidth: 126,
+        nWidth: 75,
         nHeight: 114,
         bFlipH: true
     }),
@@ -51,9 +51,9 @@ function onReady() {
     }),
 
     aAnimStandEnemy = new AnimationType({
-        strURL: "images/game_sprite.png",
+        strURL: "images/game_sprite_enemy.png",
         context: aContext,
-        nRate: 350,
+        nRate: 100,
     });
 
     aAnimBackground.appendFrame(0, 0);
@@ -75,6 +75,7 @@ function onReady() {
     aAnimStandEnemy.appendFrame(400, 0);
     aAnimStandEnemy.appendFrame(480, 0);
     aAnimStandEnemy.appendFrame(560, 0);
+
     
     
 
