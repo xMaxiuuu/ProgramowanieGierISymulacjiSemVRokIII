@@ -67,9 +67,6 @@ function onReady() {
     aEnemy.setAnimation(aAnimStandEnemy)
 
     function gameLoop(adTimestamp: number) {
-
-        function gameLoop(adTimestamp: number)
-
         let adElapsedTime = (adTimestamp - adTimeOld) * 0.001;
 
         aPlayer.update(adElapsedTime)
