@@ -13,7 +13,7 @@ class PlayerUserType extends PlayerType {
             y: 310,
             nWidth: 75,
             nHeight: 114,
-            bflipH: false,
+            bFlipH: false
         }, akvOptions = Object.assign(Object.assign({}, akvDefaults), akvOptionsIn);
         super(akvOptions);
         this.dWalkSpeed = 80.0; // pixels/sec
@@ -63,45 +63,44 @@ class PlayerUserType extends PlayerType {
             [STAND]: aAnimStand,
             [WALK_LEFT]: aAnimWalk,
             [WALK_RIGHT]: aAnimWalk,
-            [HIGH_KICK]: aAnimHighKick,
+            [HIGH_KICK]: aAnimHighKick
         };
-        update(adElapsedTime, Number);
-        {
-            let aePlayerState = STAND;
-            if (Keyboard.isLeft()) {
-                aePlayerState = WALK_LEFT;
+    }
+    update(adElapsedTime) {
+        let aePlayerState = STAND;
+        if (Keyboard.isLeft()) {
+            aePlayerState = WALK_LEFT;
+        }
+        else if (Keyboard.isRight()) {
+            aePlayerState = WALK_RIGHT;
+        }
+        else if (Keyboard.isKick()) {
+            aePlayerState = HIGH_KICK;
+        }
+        if (aePlayerState !== this.ePlayerState) {
+            this.ePlayerState = aePlayerState;
+            this.setAnimation(this.kvPlayerStateToAnim[aePlayerState]);
+            switch (aePlayerState) {
+                case WALK_LEFT:
+                    this.setFlipH(true);
+                    break;
+                case WALK_RIGHT:
+                    this.setFlipH(false);
+                    break;
+                default:
+                    break;
             }
-            else if (Keyboard.isRight()) {
-                aePlayerState = WALK_RIGHT;
-            }
-            else if (Keyboard.isKick()) {
-                aePlayerState = HIGH_KICK;
-            }
-            if (aePlayerState !== this.ePlayerState) {
-                this.ePlayerState = aePlayerState;
-                this.setAnimation(this.kvPlayerStateToAnim[aePlayerState]);
-                switch (aePlayerState) {
-                    case WALK_LEFT:
-                        this.setFlipH(true);
-                        break;
-                    case WALK_RIGHT:
-                        this.setFlipH(false);
-                        break;
-                    default:
-                        break;
-                }
-                {
-                    switch (aePlayerState) {
-                        case WALK_LEFT:
-                            this.setX(this.getX() - this.dWalkSpeed * adElapsedTime);
-                            break;
-                        case WALK_RIGHT:
-                            this.setX(this.getX() + this.dWalkSpeed * adElapsedTime);
-                            break;
-                        default:
-                            break;
-                    }
-                }
+        }
+        else {
+            switch (aePlayerState) {
+                case WALK_LEFT:
+                    this.setX(this.getX() - this.dWalkSpeed * adElapsedTime);
+                    break;
+                case WALK_RIGHT:
+                    this.setX(this.getX() + this.dWalkSpeed * adElapsedTime);
+                    break;
+                default:
+                    break;
             }
         }
     }

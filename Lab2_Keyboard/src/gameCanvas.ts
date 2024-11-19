@@ -15,6 +15,7 @@ function onReady() {
     const aCanvas = document.createElement("canvas");
 
     aCanvas.setAttribute("id", "idCanvas");
+    aCanvas.style.display = "none"
     aCanvas.width = 640;
     aCanvas.height = 480;
     aBoard.appendChild(aCanvas);
@@ -26,11 +27,8 @@ function onReady() {
     }
 
     const aBackground = new PlayerType({ nWidth: 640, nHeight: 480 }),
-        aPlayer = new PlayerType({
-        x: 280,
-        y: 140,
-        nWidth: 75,
-        nHeight: 114,
+        aPlayer = new PlayerUserType({
+        context: aContext
     }),
 
     aEnemy = new PlayerType({

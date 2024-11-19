@@ -1,4 +1,5 @@
 import PlayerType from "./gameCanvas_Player.js";
+import PlayerUserType from "./gameCanvas_PlayerUser.js";
 import AnimationType from "./gameCanvas_Animation.js";
 document.addEventListener("DOMContentLoaded", onReady);
 function onReady() {
@@ -9,6 +10,7 @@ function onReady() {
     }
     const aCanvas = document.createElement("canvas");
     aCanvas.setAttribute("id", "idCanvas");
+    aCanvas.style.display = "none";
     aCanvas.width = 640;
     aCanvas.height = 480;
     aBoard.appendChild(aCanvas);
@@ -17,11 +19,8 @@ function onReady() {
         //console.error("Nie udało się uzyskać kontekstu 2D dla canvas.");
         return;
     }
-    const aBackground = new PlayerType({ nWidth: 640, nHeight: 480 }), aPlayer = new PlayerType({
-        x: 280,
-        y: 140,
-        nWidth: 75,
-        nHeight: 114,
+    const aBackground = new PlayerType({ nWidth: 640, nHeight: 480 }), aPlayer = new PlayerUserType({
+        context: aContext
     }), aEnemy = new PlayerType({
         x: 400,
         y: 140,
