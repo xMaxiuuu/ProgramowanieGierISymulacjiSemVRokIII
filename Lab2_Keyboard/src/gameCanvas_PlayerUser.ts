@@ -63,25 +63,23 @@ class PlayerUserType extends PlayerType {
         });
 
         // Animacje stania
-        aAnimStand.appendFrame(20, 2);
-        aAnimStand.appendFrame(98, 2);
-        aAnimStand.appendFrame(176, 2);
-        aAnimStand.appendFrame(250, 2);
-        aAnimStand.appendFrame(325, 2);
-        aAnimStand.appendFrame(395, 2);
-        aAnimStand.appendFrame(465, 2);
-        aAnimStand.appendFrame(538, 2);
-        aAnimStand.appendFrame(688, 2);
+        aAnimStand.appendFrame(0, 0);
+        aAnimStand.appendFrame(80, 0);
+        aAnimStand.appendFrame(160, 0);
+        aAnimStand.appendFrame(240, 0);
+        aAnimStand.appendFrame(320, 0);
+        aAnimStand.appendFrame(400, 0);
+        aAnimStand.appendFrame(480, 0);
+        aAnimStand.appendFrame(560, 0);
 
         // Animacje chodzenia
-        aAnimWalk.appendFrame(1637, 2);
-        aAnimWalk.appendFrame(1777, 2);
-        aAnimWalk.appendFrame(1755, 2);
-        aAnimWalk.appendFrame(1892, 2);
-        aAnimWalk.appendFrame(2007, 2);
-        aAnimWalk.appendFrame(2172, 2);
-        aAnimWalk.appendFrame(2242, 2);
-
+        aAnimWalk.appendFrame(0, 100)
+        aAnimWalk.appendFrame(80, 100)
+        aAnimWalk.appendFrame(160, 100)
+        aAnimWalk.appendFrame(240, 100)
+        aAnimWalk.appendFrame(320, 100)
+        aAnimWalk.appendFrame(400, 100)
+        
         // Animacje kopnięcia
         aAnimHighKick.appendFrame(1463, 1232);
         aAnimHighKick.appendFrame(1562, 1232);
