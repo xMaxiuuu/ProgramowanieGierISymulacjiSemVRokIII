@@ -23,9 +23,9 @@ function onReady() {
         context: aContext
     }), aEnemy = new PlayerType({
         x: 400,
-        y: 140,
+        y: 100,
         nWidth: 75,
-        nHeight: 114,
+        nHeight: 100,
         bFlipH: true
     }), aAnimBackground = new AnimationType({
         strURL: "images/game_background.jpg",

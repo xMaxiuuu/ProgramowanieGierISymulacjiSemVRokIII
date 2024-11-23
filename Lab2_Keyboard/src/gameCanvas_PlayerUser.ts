@@ -32,9 +32,9 @@ class PlayerUserType extends PlayerType {
     constructor(akvOptionsIn: OnlyRequired<MyPlayerUserOptions, "context">) {
         const akvDefaults: OnlyOptional<MyPlayerUserOptions, "context"> = {
             x: 280,
-            y: 310,
+            y: 100,
             nWidth: 75,
-            nHeight: 114,
+            nHeight: 100,
             bFlipH: false
         }, akvOptions = { ...akvDefaults, ...akvOptionsIn };
 
@@ -59,7 +59,7 @@ class PlayerUserType extends PlayerType {
         aAnimHighKick = new AnimationType({
             strURL: "images/game_sprite.png",
             context: this.kvOptions.context,
-            nRate: 100,
+            nRate: 200,
         });
 
         // Animacje stania
@@ -73,20 +73,16 @@ class PlayerUserType extends PlayerType {
         aAnimStand.appendFrame(560, 0);
 
         // Animacje chodzenia
-        aAnimWalk.appendFrame(0, 100)
-        aAnimWalk.appendFrame(80, 100)
-        aAnimWalk.appendFrame(160, 100)
-        aAnimWalk.appendFrame(240, 100)
-        aAnimWalk.appendFrame(320, 100)
-        aAnimWalk.appendFrame(400, 100)
+        aAnimWalk.appendFrame(0, 98)
+        aAnimWalk.appendFrame(80, 98)
+        aAnimWalk.appendFrame(160, 98)
+        aAnimWalk.appendFrame(240, 98)
+        aAnimWalk.appendFrame(320, 98)
+        aAnimWalk.appendFrame(400, 98)
         
         // Animacje kopnięcia
-        aAnimHighKick.appendFrame(1463, 1232);
-        aAnimHighKick.appendFrame(1562, 1232);
-        aAnimHighKick.appendFrame(1666, 1232);
-        aAnimHighKick.appendFrame(1749, 1232);
-        aAnimHighKick.appendFrame(1893, 1232);
-        aAnimHighKick.appendFrame(1997, 1232);
+        aAnimHighKick.appendFrame(5, 370)
+        aAnimHighKick.appendFrame(85, 370)
 
         // Mapowanie stanów na animacje
         this.kvPlayerStateToAnim = {
