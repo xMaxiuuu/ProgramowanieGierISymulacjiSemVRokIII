@@ -1,0 +1,11 @@
+#idGame {
+    position: relative;
+    width: 640px;
+    height: 400px;
+    overflow: hidden;
+    border: 1px solid darkgray;
+}
+
+h1{
+    text-align: center;
+}
