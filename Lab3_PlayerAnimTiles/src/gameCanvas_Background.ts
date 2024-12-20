@@ -4,17 +4,17 @@ import { type MyPlayerOptions } from "./gameCanvas_Player.js";
 
 export { BackgroundType as default }
 
-type myBackground = MyPlayerOptions & {
+type MyBackgroundOptions = MyPlayerOptions & {
     context: CanvasRenderingContext2D,
     strURL: string,
     nWorldWidth: number
 };
 
 class BackgroundType extends PlayerType{
-    declare kvOptions: MyPlayerOptions;
+    declare kvOptions: MyBackgroundOptions;
 
-    constructor(akvOptionsIn: OnlyRequired<myBackgroundOptions, "strURL" | "context">) {
-        const akvDefaults: Partial<myBackgroundOptions> = {
+    constructor(akvOptionsIn: OnlyRequired<MyBackgroundOptions, "strURL" | "context">) {
+        const akvDefaults: Partial<MyBackgroundOptions> = {
             nWorldWidth: 1
         }, akvOptions = { ...akvDefaults, ...akvOptionsIn };
 
@@ -32,12 +32,12 @@ class BackgroundType extends PlayerType{
         this.setAnimation(aAnimBackgroud)
     }
 
-    draw(adOffsetX: number) {
-        const aWorldX = aWorldOffsetX,
-        aWorldXR = aWorldXL + this.kvOptions.nWorldWidth - 1;
-        anWidth = this.getWidth(),
-        anStart = Math.floor(aWorldXL / anWidth),
-        anEnd = Math.floor(aWorldXR / anWidth);
+    draw(adWorldOffsetX: number) {
+        const adWorldXL = adWorldOffsetX,
+            adWorldXR = adWorldXL + this.kvOptions.nWorldWidth - 1;
+            anWidth = this.getWidth(),
+            anStart = Math.floor(adWorldXL / anWidth),
+            anEnd = Math.floor(adWorldXR / anWidth);
 
         for(let n = anStart; n <= AnalyserNode; n++){
             this.setX(aWidth * n)
