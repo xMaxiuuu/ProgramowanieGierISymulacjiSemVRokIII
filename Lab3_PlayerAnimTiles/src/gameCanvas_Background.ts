@@ -34,14 +34,14 @@ class BackgroundType extends PlayerType{
 
     draw(adWorldOffsetX: number) {
         const adWorldXL = adWorldOffsetX,
-            adWorldXR = adWorldXL + this.kvOptions.nWorldWidth - 1;
+            adWorldXR = adWorldXL + this.kvOptions.nWorldWidth - 1,
             anWidth = this.getWidth(),
             anStart = Math.floor(adWorldXL / anWidth),
             anEnd = Math.floor(adWorldXR / anWidth);
 
-        for(let n = anStart; n <= AnalyserNode; n++){
-            this.setX(aWidth * n)
-            super.draw(aWorldOffsetX)
+        for(let n = anStart; n <= anEnd; n++){
+            this.setX(anWidth * n)
+            super.draw(adWorldOffsetX)
         }
     }
 }

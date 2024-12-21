@@ -1,5 +1,5 @@
 /// <reference path="./mytypes.d.ts" />
-import PlayerType from "./gameCanvas_Player";
+import PlayerType from "./gameCanvas_Player.js";
 export { TilesType as default };
 class TilesType {
     constructor(akvOptionsIn) {

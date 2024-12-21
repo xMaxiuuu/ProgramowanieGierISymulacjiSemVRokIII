@@ -75,7 +75,7 @@ class PlayerType {
         return this.kvOptions.y
     }
 
-    getWidth(): number{
+    getWidth(): number {
         return this.kvOptions.nWidth
     }
 }

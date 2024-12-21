@@ -1,7 +1,7 @@
 /// <reference path="./mytypes.d.ts" />
 
-import PlayerType from "./gameCanvas_Player";
-import AnimationType from "./gameCanvas_Animation";
+import PlayerType from "./gameCanvas_Player.js";
+import type AnimationType from "./gameCanvas_Animation.js";
 
 export { TilesType as default }
 
@@ -60,7 +60,7 @@ class TilesType{
                 }
             }
     }
-    draw(adOffsetX: Number){
+    draw(adOffsetX: number){
         this.vvTiles.forEach(avLine => avLine.forEach(aTile => aTile.draw(adOffsetX)))
     }
 }

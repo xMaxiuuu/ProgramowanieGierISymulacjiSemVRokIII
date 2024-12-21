@@ -1,7 +1,8 @@
 import PlayerType from "./gameCanvas_Player.js";
 import PlayerUserType from "./gameCanvas_PlayerUser.js";
 import AnimationType from "./gameCanvas_Animation.js";
-
+import BackgroundType from "./gameCanvas_Background.js";
+import TilesType from "./gameCanvas_Tiles.js";
 
 document.addEventListener("DOMContentLoaded", onReady);
 
