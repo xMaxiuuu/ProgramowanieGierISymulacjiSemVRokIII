@@ -13,7 +13,7 @@ function onReady() {
     const aCanvas = document.createElement("canvas");
     aCanvas.setAttribute("id", "idCanvas");
     aCanvas.style.display = "none";
-    aCanvas.width = 640;
+    aCanvas.width = 300;
     aCanvas.height = 480;
     aBoard.appendChild(aCanvas);
     const aContext = aCanvas.getContext("2d");
@@ -22,23 +22,24 @@ function onReady() {
         return;
     }
     const aBackground = new BackgroundType({
-        nWorldWidth: 640,
-        nWidth: 640, nHeight: 480,
+        y: -100,
+        nWorldWidth: 300,
+        nWidth: 300, nHeight: 650,
         strURL: "images/game_background.jpg",
         context: aContext
     }), aBackground2 = new BackgroundType({
-        nWorldWidth: 640,
-        y: 160,
-        nWidth: 377, nHeight: 319,
+        nWorldWidth: 5000,
+        y: 800,
+        nWidth: 800, nHeight: 108,
         strURL: "images/game_background2.jpg",
         context: aContext
     }), aPlayer = new PlayerUserType({
         context: aContext
     }), aEnemy = new PlayerType({
-        x: 400,
-        y: 100,
-        nWidth: 75,
-        nHeight: 100,
+        x: 120,
+        y: 200,
+        nWidth: 64,
+        nHeight: 64,
         bFlipH: true
     }), aAnimStandEnemy = new AnimationType({
         strURL: "images/game_sprite_enemy.png",
@@ -73,11 +74,13 @@ function onReady() {
         context: aContext
     });
     aAnimTile0.appendFrame(0, 0);
-    aAnimTile0.appendFrame(280, 0);
-    aAnimTile0.appendFrame(350, 0);
+    aAnimTile0.appendFrame(0, 0);
+    aAnimTile0.appendFrame(0, 0);
+    /*aAnimTile0.appendFrame(280,0)
+    aAnimTile0.appendFrame(350,0)*/
     const aTiles = new TilesType({
-        nTileWidth: 70,
-        nTileHeight: 70,
+        nTileWidth: 190,
+        nTileHeight: 118,
         vvMapTiles: aMapTiles_Level10,
         vAnimations: [aAnimTile0, aAnimTile1, aAnimTile2],
         context: aContext
@@ -90,8 +93,8 @@ function onReady() {
         if (200 < x) {
             adOffsetX = x - 200;
         }
-        aBackground.draw(adOffsetX * 0.33);
-        aBackground2.draw(adOffsetX * 0.66);
+        aBackground.draw(adOffsetX * 0.4);
+        aBackground2.draw(adOffsetX * 0.9);
         aTiles.draw(adOffsetX);
         aEnemy.draw(adOffsetX);
         aPlayer.draw(adOffsetX);
