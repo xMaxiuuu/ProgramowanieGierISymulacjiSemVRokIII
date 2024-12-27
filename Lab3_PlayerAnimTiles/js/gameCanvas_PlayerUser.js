@@ -9,10 +9,10 @@ const STAND = Symbol("stand"), WALK_LEFT = Symbol("walk left"), WALK_RIGHT = Sym
 class PlayerUserType extends PlayerType {
     constructor(akvOptionsIn) {
         const akvDefaults = {
-            x: 280,
-            y: 100,
-            nWidth: 75,
-            nHeight: 100,
+            x: 120,
+            y: 240,
+            nWidth: 64,
+            nHeight: 64,
             bFlipH: false
         }, akvOptions = Object.assign(Object.assign({}, akvDefaults), akvOptionsIn);
         super(akvOptions);
@@ -21,37 +21,41 @@ class PlayerUserType extends PlayerType {
             throw "Missing context";
         }
         const aAnimStand = new AnimationType({
-            strURL: "images/game_sprite.png",
+            strURL: "images/game_sprite_cat.png",
             context: this.kvOptions.context,
             nRate: 100,
         }), aAnimWalk = new AnimationType({
-            strURL: "images/game_sprite.png",
+            strURL: "images/game_sprite_cat.png",
             context: this.kvOptions.context,
             nRate: 100,
         }), aAnimHighKick = new AnimationType({
-            strURL: "images/game_sprite.png",
+            strURL: "images/game_sprite_cat.png",
             context: this.kvOptions.context,
             nRate: 200,
         });
         // Animacje stania
         aAnimStand.appendFrame(0, 0);
-        aAnimStand.appendFrame(80, 0);
+        /*aAnimStand.appendFrame(80, 0);
         aAnimStand.appendFrame(160, 0);
         aAnimStand.appendFrame(240, 0);
         aAnimStand.appendFrame(320, 0);
         aAnimStand.appendFrame(400, 0);
         aAnimStand.appendFrame(480, 0);
-        aAnimStand.appendFrame(560, 0);
+        aAnimStand.appendFrame(560, 0);*/
         // Animacje chodzenia
-        aAnimWalk.appendFrame(0, 98);
-        aAnimWalk.appendFrame(80, 98);
-        aAnimWalk.appendFrame(160, 98);
-        aAnimWalk.appendFrame(240, 98);
-        aAnimWalk.appendFrame(320, 98);
-        aAnimWalk.appendFrame(400, 98);
+        aAnimWalk.appendFrame(0, 64);
+        aAnimWalk.appendFrame(64, 64);
+        aAnimWalk.appendFrame(128, 64);
+        /*aAnimWalk.appendFrame(80, 98)
+        aAnimWalk.appendFrame(160, 98)
+        aAnimWalk.appendFrame(240, 98)
+        aAnimWalk.appendFrame(320, 98)
+        aAnimWalk.appendFrame(400, 98)*/
         // Animacje kopnięcia
-        aAnimHighKick.appendFrame(5, 370);
-        aAnimHighKick.appendFrame(85, 370);
+        /*aAnimHighKick.appendFrame(5, 370)
+        aAnimHighKick.appendFrame(85, 370)*/
+        aAnimHighKick.appendFrame(256, 256);
+        aAnimHighKick.appendFrame(320, 256);
         // Mapowanie stanów na animacje
         this.kvPlayerStateToAnim = {
             [STAND]: aAnimStand,

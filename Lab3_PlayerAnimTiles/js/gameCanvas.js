@@ -1,13 +1,13 @@
+document.addEventListener("DOMContentLoaded", onReady);
 import PlayerType from "./gameCanvas_Player.js";
 import PlayerUserType from "./gameCanvas_PlayerUser.js";
 import AnimationType from "./gameCanvas_Animation.js";
 import BackgroundType from "./gameCanvas_Background.js";
 import TilesType from "./gameCanvas_Tiles.js";
-document.addEventListener("DOMContentLoaded", onReady);
 function onReady() {
     const aBoard = document.getElementById("idGame");
     if (!aBoard) {
-        //console.error("Element #idGame nie został znaleziony w HTML.");
+        console.error("Element #idGame nie został znaleziony w HTML.");
         return;
     }
     const aCanvas = document.createElement("canvas");
@@ -18,20 +18,22 @@ function onReady() {
     aBoard.appendChild(aCanvas);
     const aContext = aCanvas.getContext("2d");
     if (!aContext) {
-        //console.error("Nie udało się uzyskać kontekstu 2D dla canvas.");
+        console.error("Nie udało się uzyskać kontekstu 2D dla canvas.");
         return;
     }
     const aBackground = new BackgroundType({
         y: -100,
         nWorldWidth: 300,
-        nWidth: 300, nHeight: 650,
-        strURL: "images/game_background.jpg",
+        nWidth: 300,
+        nHeight: 650,
+        strURL: "images/game_bcg.png",
         context: aContext
     }), aBackground2 = new BackgroundType({
         nWorldWidth: 5000,
         y: 800,
-        nWidth: 800, nHeight: 108,
-        strURL: "images/game_background2.jpg",
+        nWidth: 800,
+        nHeight: 108,
+        strURL: "images/nicesky.png",
         context: aContext
     }), aPlayer = new PlayerUserType({
         context: aContext
@@ -42,27 +44,30 @@ function onReady() {
         nHeight: 64,
         bFlipH: true
     }), aAnimStandEnemy = new AnimationType({
-        strURL: "images/game_sprite_enemy.png",
+        strURL: "images/devil_sprite.png",
         context: aContext,
         nRate: 100,
     });
     aAnimStandEnemy.appendFrame(0, 0);
-    aAnimStandEnemy.appendFrame(80, 0);
+    aAnimStandEnemy.appendFrame(65, 0);
+    aAnimStandEnemy.appendFrame(130, 0);
+    aAnimStandEnemy.appendFrame(195, 0);
+    /*aAnimStandEnemy.appendFrame(80, 0);
     aAnimStandEnemy.appendFrame(160, 0);
     aAnimStandEnemy.appendFrame(240, 0);
     aAnimStandEnemy.appendFrame(320, 0);
     aAnimStandEnemy.appendFrame(400, 0);
     aAnimStandEnemy.appendFrame(480, 0);
-    aAnimStandEnemy.appendFrame(560, 0);
+    aAnimStandEnemy.appendFrame(560, 0);*/
     aEnemy.setAnimation(aAnimStandEnemy);
     const aMapTiles_Level10 = [
+        [0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0],
+        [0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0],
+        [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [1, 1, 2, 2, 3, 3, 2, 2, 1, 2, 3, 1, 2, 2, 3, 3, 2, 2, 1, 2]
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
     ], aAnimTile0 = new AnimationType({
         strURL: "images/game_tiles.png",
         context: aContext
@@ -74,8 +79,8 @@ function onReady() {
         context: aContext
     });
     aAnimTile0.appendFrame(0, 0);
-    aAnimTile0.appendFrame(0, 0);
-    aAnimTile0.appendFrame(0, 0);
+    aAnimTile1.appendFrame(0, 0);
+    aAnimTile2.appendFrame(0, 0);
     /*aAnimTile0.appendFrame(280,0)
     aAnimTile0.appendFrame(350,0)*/
     const aTiles = new TilesType({
