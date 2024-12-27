@@ -17,7 +17,7 @@ function onReady() {
 
     aCanvas.setAttribute("id", "idCanvas");
     aCanvas.style.display = "none"
-    aCanvas.width = 300;
+    aCanvas.width = 640;
     aCanvas.height = 480;
     aBoard.appendChild(aCanvas);
 
@@ -29,10 +29,10 @@ function onReady() {
 
     const aBackground = new BackgroundType({
         y: -100,
-        nWorldWidth: 300,
-        nWidth: 300, 
+        nWorldWidth: 640,
+        nWidth: 640, 
         nHeight: 650,
-        strURL: "images/game_bcg.png",
+        strURL: "images/game_background.png",
         context: aContext
     }),
 
@@ -41,7 +41,7 @@ function onReady() {
         y: 800,
         nWidth: 800, 
         nHeight: 108,
-        strURL: "images/nicesky.png",
+        strURL: "images/game_background2.jpg",
         context: aContext
     }),
 
@@ -50,41 +50,38 @@ function onReady() {
     }),
 
     aEnemy = new PlayerType({
-        x: 120,
-        y:200,
-        nWidth: 64,
-        nHeight: 64,
+        x: 400,
+        y:100,
+        nWidth: 75,
+        nHeight: 100,
         bFlipH: true
     }),
 
     aAnimStandEnemy = new AnimationType({
-        strURL: "images/devil_sprite.png",
+        strURL: "images/game_sprite_enemy.png",
         context: aContext,
         nRate: 100,
     });
     
     aAnimStandEnemy.appendFrame(0, 0);
-    aAnimStandEnemy.appendFrame(65, 0);
-    aAnimStandEnemy.appendFrame(130, 0);
-    aAnimStandEnemy.appendFrame(195, 0);
-    /*aAnimStandEnemy.appendFrame(80, 0);
+    aAnimStandEnemy.appendFrame(80, 0);
     aAnimStandEnemy.appendFrame(160, 0);
     aAnimStandEnemy.appendFrame(240, 0);
     aAnimStandEnemy.appendFrame(320, 0);
     aAnimStandEnemy.appendFrame(400, 0);
     aAnimStandEnemy.appendFrame(480, 0);
-    aAnimStandEnemy.appendFrame(560, 0);*/
+    aAnimStandEnemy.appendFrame(560, 0);
 
     aEnemy.setAnimation(aAnimStandEnemy)
 
     const aMapTiles_Level10 = [
         [0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0],
-        [0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
         [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,0,0,0,0],
-        [1,0,0,0,0,1,0,0,0,0,2,0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
         [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
         [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-        [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+        [1,3,1,1,2,1,1,1,1,3,2,1,1,1,1,1,1,2,1,1]
     ],
 
         aAnimTile0 = new AnimationType({
@@ -109,8 +106,8 @@ function onReady() {
     aAnimTile0.appendFrame(350,0)*/
 
     const aTiles = new TilesType({
-        nTileWidth: 190,
-        nTileHeight: 118,
+        nTileWidth: 80,
+        nTileHeight: 50,
         vvMapTiles: aMapTiles_Level10,
         vAnimations: [aAnimTile0,aAnimTile1,aAnimTile2],
         context: aContext

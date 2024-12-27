@@ -1,17 +1,10 @@
+#idGame {
+  position: relative;
+  width: 640px;
+  height: 480px;
+  overflow: hidden;
+}
+
 body{
-    background-color:rgb(0,0,0);
-    color: white;
-    font-family: 'Courier New', Courier, monospace;
-    text-align: center;
-    font-size: 30px;
-    }
-    #idGame{
-        width: 300px;
-        height: 480px;
-        overflow: hidden;
-        border: 1px solid darkgray;
-        position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-    }
+  text-align: center;
+}
