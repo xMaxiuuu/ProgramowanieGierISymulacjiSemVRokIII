@@ -1,0 +1,10 @@
+#idGame {
+  position: relative;
+  width: 640px;
+  height: 480px;
+  overflow: hidden;
+}
+
+body{
+  text-align: center;
+}
