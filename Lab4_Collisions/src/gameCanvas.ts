@@ -13,7 +13,14 @@ function onReady() {
         console.error("Element #idGame nie został znaleziony w HTML.");
         return
     }
-    const aCanvas = document.createElement("canvas");
+
+    const
+        aSplashScreen = document.getElementById("idSplashScreen"),
+        aCanvas = document.createElement("canvas");
+
+    if(!aSplashScreen){
+        return
+    }
 
     aCanvas.setAttribute("id", "idCanvas");
     aCanvas.style.display = "none"
@@ -114,7 +121,7 @@ function onReady() {
     });
 
     function gameLoop(adTimestamp: number) {
-        let adElapsedTime = (adTimestamp - adTimeOld) * 0.001;
+        let adElapsedTime = (adTimestamp - adTime) * 0.001;
         aPlayer.update(adElapsedTime)
 
         const x = aPlayer.getX();
@@ -129,13 +136,17 @@ function onReady() {
         aEnemy.draw(adOffsetX)
         aPlayer.draw(adOffsetX)
 
-        adTimeOld = adTimestamp
+        adTime = adTimestamp
         requestAnimationFrame(gameLoop)
     }
 
-    aCanvas.style.display = "block";
+    let adTime: number;
 
-    let adTimeOld = performance.now()/*,
-        adTimeStart = adTimeOld;*/
-    requestAnimationFrame(gameLoop);
+    aSplashScreen.onclick = () => {
+        aSplashScreen.style.display = "none"
+        aCanvas.style.display = "block";  
+    
+        adTime = performance.now()
+        requestAnimationFrame(gameLoop);
+    }
 }

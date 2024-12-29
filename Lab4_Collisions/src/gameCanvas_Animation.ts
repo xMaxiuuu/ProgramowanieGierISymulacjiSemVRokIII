@@ -12,6 +12,7 @@ type MyAnimationOptions = {
     context: CanvasRenderingContext2D;
     nCurrentFrame: number;
     nRate: number;
+    bLoop: boolean ///<true - plays forever
 };
 
 class AnimationType {
@@ -24,6 +25,7 @@ class AnimationType {
         const akvDefaults: OnlyOptional<MyAnimationOptions, "strURL" | "context"> = {
             nCurrentFrame: 0,
             nRate: 60,
+            bLoop: true
         };
         this.kvOptions = { ...akvDefaults, ...akvOptionsIn };
         this.Image = new Image()
@@ -48,6 +50,9 @@ class AnimationType {
 
     getCurrentFrameIndex(): number {
         return this.kvOptions.nCurrentFrame;
+    }
+    isLoop(): boolean {
+        return this.kvOptions.bLoop
     }
 
     draw(x: number, y: number, nWidth: number, nHeight: number, bFlipH: boolean) {

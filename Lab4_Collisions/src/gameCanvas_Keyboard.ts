@@ -1,6 +1,7 @@
-const KEY_LEFT: string = "a", //ArrowLeft
-    KEY_RIGHT: string = "d", //ArrowRight
-    KEY_E: string = "e";
+const KEY_LEFT: string = "a",
+    KEY_RIGHT: string = "d",
+    KEY_E: string = "e",
+    KEY_UP = " ";
 
 interface MyKeyContainer {
     [key: string]: boolean
@@ -12,7 +13,7 @@ class KeybordType {
     constructor() {
         //this.kvKeys = {};
 
-        [KEY_LEFT,KEY_RIGHT, KEY_E].forEach(aKey => {
+        [KEY_LEFT, KEY_UP, KEY_RIGHT, KEY_E].forEach(aKey => {
             this.kvKeys[aKey] = false
         })
 
@@ -36,6 +37,9 @@ class KeybordType {
     }
     isKick(): boolean {
         return this.kvKeys[KEY_E]
+    }
+    isJump(): boolean {
+        return this.kvKeys[KEY_UP]
     }
 }
 

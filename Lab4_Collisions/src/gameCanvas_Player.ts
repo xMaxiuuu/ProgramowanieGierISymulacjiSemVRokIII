@@ -1,3 +1,5 @@
+/// <reference path="./mytypes.d.ts" />
+
 import AnimationType from "./gameCanvas_Animation.js";
 
 export { PlayerType as default }
@@ -35,13 +37,18 @@ class PlayerType {
         this.AnimationCurrent = aAnimation;
 
         const anNumFrames = aAnimation.getNumFrames(); // Pobranie liczby klatek
+        aAnimation.setCurrentFrameIndex(0)
 
-        if (1 < anNumFrames) {
+        if (1 < anNumFrames) {  
             this.hAnimation = setInterval(() => {
-            aAnimation.setCurrentFrameIndex((aAnimation.getCurrentFrameIndex() + 1) % anNumFrames)
-        }, aAnimation.getInterval())
-        } else {
-            aAnimation.setCurrentFrameIndex(0);
+                let anCurrentFrameIndex = aAnimation.getCurrentFrameIndex() + 1;
+                if((!aAnimation.isLoop()) && (anCurrentFrameIndex >= anNumFrames)){
+                    clearInterval(this.hAnimation)
+                    this.hAnimation = (void 0)
+                } else {
+                    aAnimation.setCurrentFrameIndex(anCurrentFrameIndex % anNumFrames)
+                }
+            }, aAnimation.getInterval())
         }
     }
 
@@ -77,5 +84,17 @@ class PlayerType {
 
     getWidth(): number {
         return this.kvOptions.nWidth
+    }
+    getHeight(): number {
+        return this.kvOptions.nHeight
+    }
+
+    getBoundingBox(): BoundingBox {
+        return{
+            xLeft: this.kvOptions.x,
+            xRight: this.kvOptions.x + this.kvOptions.nWidth,
+            yTop: this.kvOptions.y,
+            yButtom: this.kvOptions.y + this.kvOptions.nHeight
+        }
     }
 }
