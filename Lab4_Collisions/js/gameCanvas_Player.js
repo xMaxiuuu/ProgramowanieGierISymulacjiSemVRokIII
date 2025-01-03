@@ -1,3 +1,4 @@
+/// <reference path="./mytypes.d.ts" />
 export { PlayerType as default };
 class PlayerType {
     constructor(akvOptionsIn) {
@@ -17,13 +18,18 @@ class PlayerType {
         }
         this.AnimationCurrent = aAnimation;
         const anNumFrames = aAnimation.getNumFrames(); // Pobranie liczby klatek
+        aAnimation.setCurrentFrameIndex(0);
         if (1 < anNumFrames) {
             this.hAnimation = setInterval(() => {
-                aAnimation.setCurrentFrameIndex((aAnimation.getCurrentFrameIndex() + 1) % anNumFrames);
+                let anCurrentFrameIndex = aAnimation.getCurrentFrameIndex() + 1;
+                if ((!aAnimation.isLoop()) && (anCurrentFrameIndex >= anNumFrames)) {
+                    clearInterval(this.hAnimation);
+                    this.hAnimation = (void 0);
+                }
+                else {
+                    aAnimation.setCurrentFrameIndex(anCurrentFrameIndex % anNumFrames);
+                }
             }, aAnimation.getInterval());
-        }
-        else {
-            aAnimation.setCurrentFrameIndex(0);
         }
     }
     draw(adOffsetX) {
@@ -50,5 +56,16 @@ class PlayerType {
     }
     getWidth() {
         return this.kvOptions.nWidth;
+    }
+    getHeight() {
+        return this.kvOptions.nHeight;
+    }
+    getBoundingBox() {
+        return {
+            xLeft: this.kvOptions.x,
+            xRight: this.kvOptions.x + this.kvOptions.nWidth,
+            yTop: this.kvOptions.y,
+            yButtom: this.kvOptions.y + this.kvOptions.nHeight
+        };
     }
 }

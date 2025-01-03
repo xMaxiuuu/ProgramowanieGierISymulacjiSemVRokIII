@@ -1,12 +1,10 @@
-const KEY_LEFT = "a", //ArrowLeft
-KEY_RIGHT = "d", //ArrowRight
-KEY_E = "e";
+const KEY_LEFT = "a", KEY_RIGHT = "d", KEY_E = "e", KEY_UP = " ";
 ;
 class KeybordType {
     constructor() {
         //this.kvKeys = {};
         this.kvKeys = {};
-        [KEY_LEFT, KEY_RIGHT, KEY_E].forEach(aKey => {
+        [KEY_LEFT, KEY_UP, KEY_RIGHT, KEY_E].forEach(aKey => {
             this.kvKeys[aKey] = false;
         });
         document.onkeydown = event => {
@@ -28,6 +26,9 @@ class KeybordType {
     }
     isKick() {
         return this.kvKeys[KEY_E];
+    }
+    isJump() {
+        return this.kvKeys[KEY_UP];
     }
 }
 const Keyboard = new KeybordType();

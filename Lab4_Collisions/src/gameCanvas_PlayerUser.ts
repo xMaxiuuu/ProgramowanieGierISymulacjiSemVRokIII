@@ -30,7 +30,7 @@ class PlayerUserType extends PlayerType {
     declare kvOptions: MyPlayerUserOptions;
     ePlayerState?: symbol;
     dWalkSpeed: number = 280.0; // pixels/sec
-    dJumpSpeed: number = 340.0;
+    dJumpSpeed: number = 300.0;
     dAccelY: number = 220.0
     dSpeedX: number = 0
     dSpeedY: number = 0
@@ -41,9 +41,9 @@ class PlayerUserType extends PlayerType {
     constructor(akvOptionsIn: OnlyRequired<MyPlayerUserOptions, "context">) {
         const akvDefaults: OnlyOptional<MyPlayerUserOptions, "context"> = {
             x: 280,
-            y: 240, // <----- Pozycja gracza na planszy
-            nWidth: 75,
-            nHeight: 100,
+            y: 180, // <----- Pozycja gracza na planszy
+            nWidth: 72,
+            nHeight: 67,
             bFlipH: false
         }, akvOptions = { ...akvDefaults, ...akvOptionsIn };
 
@@ -74,35 +74,37 @@ class PlayerUserType extends PlayerType {
         aAnimJump = new AnimationType({
             strURL: "images/game_sprite.png",
             context: this.kvOptions.context,
-            nRate: 350,
+            nRate: 100,
             bLoop: false
         });
 
          // Animacje stania
-        aAnimStand.appendFrame(0, 0);
-        aAnimStand.appendFrame(80, 0);
-        aAnimStand.appendFrame(160, 0);
-        aAnimStand.appendFrame(240, 0);
-        aAnimStand.appendFrame(320, 0);
-        aAnimStand.appendFrame(400, 0);
-        aAnimStand.appendFrame(480, 0);
-        aAnimStand.appendFrame(560, 0);
+         aAnimStand.appendFrame(12, 16);
+         aAnimStand.appendFrame(92, 16);
+         aAnimStand.appendFrame(172, 16);
+         aAnimStand.appendFrame(252, 16);
+         aAnimStand.appendFrame(332, 16);
+         aAnimStand.appendFrame(412, 16);
+         aAnimStand.appendFrame(492, 16);
+         aAnimStand.appendFrame(572, 16);
 
         // Animacje chodzenia
-        aAnimWalk.appendFrame(0, 98)
-        aAnimWalk.appendFrame(80, 98)
-        aAnimWalk.appendFrame(160, 98)
-        aAnimWalk.appendFrame(240, 98)
-        aAnimWalk.appendFrame(320, 98)
-        aAnimWalk.appendFrame(400, 98)
+        aAnimWalk.appendFrame(12, 114);
+        aAnimWalk.appendFrame(92, 114);
+        aAnimWalk.appendFrame(172, 114);
+        aAnimWalk.appendFrame(252, 114);
+        aAnimWalk.appendFrame(332, 114);
+        aAnimWalk.appendFrame(412, 114);
         
-        // Animacje kopnięcia
-        aAnimHighKick.appendFrame(5, 370)
-        aAnimHighKick.appendFrame(85, 370)
-
         // Animacje skoku
-        
-        // Mapowanie stanów na animacje
+        aAnimJump.appendFrame(12, 296);
+        aAnimJump.appendFrame(92, 296);
+
+        // Animacje kopnięcia
+        aAnimHighKick.appendFrame(12, 385);
+        aAnimHighKick.appendFrame(92, 385);
+
+
         this.kvPlayerStateToAnim = {
             [STAND]: aAnimStand,
             [WALK_LEFT]: aAnimWalk,
@@ -171,7 +173,7 @@ class PlayerUserType extends PlayerType {
                 yButtom: adY_new + this.getHeight()
             };
             
-        const avTilesColliding: PlayerType[] = aTiles.getCollidingTiles(akvBoundingBox_new),
+        const avTilesColliding: PlayerType[] = aTiles.getCollidingTile(akvBoundingBox_new),
             anTiles = avTilesColliding.length;
         
         if (0 >= anTiles) {

@@ -6,6 +6,7 @@ class AnimationType {
         const akvDefaults = {
             nCurrentFrame: 0,
             nRate: 60,
+            bLoop: true
         };
         this.kvOptions = Object.assign(Object.assign({}, akvDefaults), akvOptionsIn);
         this.Image = new Image();
@@ -25,6 +26,9 @@ class AnimationType {
     }
     getCurrentFrameIndex() {
         return this.kvOptions.nCurrentFrame;
+    }
+    isLoop() {
+        return this.kvOptions.bLoop;
     }
     draw(x, y, nWidth, nHeight, bFlipH) {
         const { kvOptions: { context: aContext, nCurrentFrame: anCurrentFrame } } = this, aFrame = this.vFrames[anCurrentFrame];

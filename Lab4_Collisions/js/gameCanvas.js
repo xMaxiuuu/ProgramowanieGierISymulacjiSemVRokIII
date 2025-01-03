@@ -10,7 +10,10 @@ function onReady() {
         console.error("Element #idGame nie został znaleziony w HTML.");
         return;
     }
-    const aCanvas = document.createElement("canvas");
+    const aSplashScreen = document.getElementById("idSplashScreen"), aCanvas = document.createElement("canvas");
+    if (!aSplashScreen) {
+        return;
+    }
     aCanvas.setAttribute("id", "idCanvas");
     aCanvas.style.display = "none";
     aCanvas.width = 640;
@@ -39,8 +42,8 @@ function onReady() {
         context: aContext
     }), aEnemy = new PlayerType({
         x: 400,
-        y: 100,
-        nWidth: 75,
+        y: 70,
+        nWidth: 70,
         nHeight: 100,
         bFlipH: true
     }), aAnimStandEnemy = new AnimationType({
@@ -61,9 +64,9 @@ function onReady() {
         [0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0],
         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         [1, 3, 1, 1, 2, 1, 1, 1, 1, 3, 2, 1, 1, 1, 1, 1, 1, 2, 1, 1]
     ], aAnimTile0 = new AnimationType({
         strURL: "images/game_tiles.png",
@@ -88,23 +91,26 @@ function onReady() {
         context: aContext
     });
     function gameLoop(adTimestamp) {
-        let adElapsedTime = (adTimestamp - adTimeOld) * 0.001;
-        aPlayer.update(adElapsedTime);
+        let adElapsedTime = (adTimestamp - adTime) * 0.001;
+        aPlayer.update(adElapsedTime, aTiles);
         const x = aPlayer.getX();
         let adOffsetX = 0.0;
         if (200 < x) {
             adOffsetX = x - 200;
         }
         aBackground.draw(adOffsetX * 0.4);
-        aBackground2.draw(adOffsetX * 0.9);
+        aBackground2.draw(adOffsetX * -0.3);
         aTiles.draw(adOffsetX);
         aEnemy.draw(adOffsetX);
         aPlayer.draw(adOffsetX);
-        adTimeOld = adTimestamp;
+        adTime = adTimestamp;
         requestAnimationFrame(gameLoop);
     }
-    aCanvas.style.display = "block";
-    let adTimeOld = performance.now(); /*,
-        adTimeStart = adTimeOld;*/
-    requestAnimationFrame(gameLoop);
+    let adTime;
+    aSplashScreen.onclick = () => {
+        aSplashScreen.style.display = "none";
+        aCanvas.style.display = "block";
+        adTime = performance.now();
+        requestAnimationFrame(gameLoop);
+    };
 }

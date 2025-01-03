@@ -58,8 +58,8 @@ function onReady() {
 
     aEnemy = new PlayerType({
         x: 400,
-        y:100,
-        nWidth: 75,
+        y:70,
+        nWidth: 70,
         nHeight: 100,
         bFlipH: true
     }),
@@ -85,9 +85,9 @@ function onReady() {
         [0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0],
         [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
         [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,0,0,0,0],
-        [0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-        [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-        [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0],
         [1,3,1,1,2,1,1,1,1,3,2,1,1,1,1,1,1,2,1,1]
     ],
 
@@ -121,8 +121,8 @@ function onReady() {
     });
 
     function gameLoop(adTimestamp: number) {
-        let adElapsedTime = (adTimestamp - adTime) * 0.001;
-        aPlayer.update(adElapsedTime)
+        let adElapsedTime = (adTimestamp - adTime) * 0.001
+        aPlayer.update(adElapsedTime, aTiles)
 
         const x = aPlayer.getX();
         let adOffsetX = 0.0;
@@ -131,7 +131,7 @@ function onReady() {
         }
 
         aBackground.draw(adOffsetX * 0.4)
-        aBackground2.draw(adOffsetX * 0.9)
+        aBackground2.draw(adOffsetX * -0.3)
         aTiles.draw(adOffsetX)
         aEnemy.draw(adOffsetX)
         aPlayer.draw(adOffsetX)

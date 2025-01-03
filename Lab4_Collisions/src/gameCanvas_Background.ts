@@ -39,7 +39,7 @@ class BackgroundType extends PlayerType{
             anStart = Math.floor(adWorldXL / anWidth),
             anEnd = Math.floor(adWorldXR / anWidth);
 
-        for(let n = anStart; n <= anEnd; n++){
+        for(let n = anStart; n <= anEnd; ++n){
             this.setX(anWidth * n)
             super.draw(adWorldOffsetX)
         }
