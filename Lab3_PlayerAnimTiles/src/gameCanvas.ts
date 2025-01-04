@@ -38,10 +38,9 @@ function onReady() {
 
     aBackground2 = new BackgroundType({
         nWorldWidth: 5000,
-        y: 800,
-        nWidth: 800, 
-        nHeight: 108,
-        strURL: "images/game_background2.jpg",
+        nWidth: 200, 
+        nHeight: 100,
+        strURL: "images/lijany.png",
         context: aContext
     }),
 
@@ -75,10 +74,10 @@ function onReady() {
     aEnemy.setAnimation(aAnimStandEnemy)
 
     const aMapTiles_Level10 = [
-        [0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0],
+        [0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,0],
         [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
         [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,0,0,0,0],
-        [0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
         [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
         [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
         [1,3,1,1,2,1,1,1,1,3,2,1,1,1,1,1,1,2,1,1]
