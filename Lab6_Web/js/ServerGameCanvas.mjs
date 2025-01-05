@@ -12,7 +12,7 @@ aWebSocketServer.on("connection", (aWebSocketClient, req) => {
 
     if(!aWabSocketPlayer){
         console.log("Player connected")
-        aWabSocketPlayer = aWabSocketClient
+        aWabSocketPlayer = aWebSocketClient
 
         aWabSocketPlayer.on("close", () =>{
             aWabSocketPlayer = null
