@@ -4,24 +4,24 @@ console.log("Start")
 
 const aWebSocketServer = new WebSocketServer({ port: 8080 });
 
-let aWabSocketPlayer;
+let aWebSocketPlayer;
 
 aWebSocketServer.on("connection", (aWebSocketClient, req) => {
     const ip = req.socket.remoteAddress;
-    console.log('Connected from IP: ${ip}')
+    console.log(`Connected from IP= ${ip}`)
 
-    if(!aWabSocketPlayer){
+    if(!aWebSocketPlayer){
         console.log("Player connected")
-        aWabSocketPlayer = aWebSocketClient
+        aWebSocketPlayer = aWebSocketClient
 
-        aWabSocketPlayer.on("close", () =>{
-            aWabSocketPlayer = null
+        aWebSocketPlayer.on("close", () =>{
+            aWebSocketPlayer = null
         })
         aWebSocketClient.on('error', console.error)
 
-        aWabSocketPlayer.on("message", (data) => {
+        aWebSocketPlayer.on("message", (data) => {
             aWebSocketServer.clients.forEach((client) =>{
-                if(client !== aWabSocketPlayer && WebSocket.OPEN === client.readyState){
+                if(client !== aWebSocketPlayer && WebSocket.OPEN === client.readyState){
                     client.send(data)
                 }
             })
