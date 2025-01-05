@@ -33,10 +33,9 @@ function onReady() {
         context: aContext
     }), aBackground2 = new BackgroundType({
         nWorldWidth: 5000,
-        y: 800,
-        nWidth: 800,
-        nHeight: 108,
-        strURL: "images/game_background2.jpg",
+        nWidth: 200,
+        nHeight: 100,
+        strURL: "images/lijany.png",
         context: aContext
     }), aPlayer = new PlayerUserType({
         context: aContext
@@ -61,18 +60,18 @@ function onReady() {
     aAnimStandEnemy.appendFrame(560, 0);
     aEnemy.setAnimation(aAnimStandEnemy);
     const aMapTiles_Level10 = [
-        [0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0],
+        [0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0],
         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 2, 0, 0, 0, 2, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 2, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [2, 2, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         [1, 3, 1, 1, 2, 1, 1, 1, 1, 3, 2, 1, 1, 1, 1, 1, 1, 2, 1, 1]
     ], aAnimTile0 = new AnimationType({
         strURL: "images/game_tiles.png",
         context: aContext
     }), aAnimTile1 = new AnimationType({
-        strURL: "images/game_tiles.png",
+        strURL: "images/game_tiles2.png",
         context: aContext
     }), aAnimTile2 = new AnimationType({
         strURL: "images/game_tiles.png",

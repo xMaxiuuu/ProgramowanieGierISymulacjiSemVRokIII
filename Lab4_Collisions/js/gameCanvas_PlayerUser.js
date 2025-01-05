@@ -112,10 +112,10 @@ class PlayerUserType extends PlayerType {
         else {
             switch (aePlayerState) {
                 case WALK_LEFT:
-                    this.setX(this.getX() - this.dWalkSpeed * adElapsedTime);
+                    this.dSpeedX = -this.dWalkSpeed;
                     break;
                 case WALK_RIGHT:
-                    this.setX(this.getX() + this.dWalkSpeed * adElapsedTime);
+                    this.dSpeedX = this.dWalkSpeed;
                     break;
                 default:
                     break;
