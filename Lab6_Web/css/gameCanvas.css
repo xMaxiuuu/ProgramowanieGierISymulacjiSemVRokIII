@@ -1,0 +1,27 @@
+#idGame {
+  position: relative;
+  width: 640px;
+  height: 480px;
+  overflow: hidden;
+}
+
+#idSplashScreen{
+  user-select: none;
+
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  font-family: '3dumbregilar';
+  font-size: 100px;
+  
+  padding-top: 80px;
+  cursor: crosshair;
+  z-index: 1000;
+  background-color: gold;
+}
+
+body{
+  text-align: center;
+  background-color: black;
+  color: whitesmoke;
+}
