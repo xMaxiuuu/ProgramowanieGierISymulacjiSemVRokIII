@@ -100,6 +100,9 @@ class WebSocketType {
                     x,
                     y
                 };
+                this.WebSocket.send(JSON.stringify(akvData))
+                this.sentX = x
+                this.sentY = y
             }
         }
     } 

@@ -45,7 +45,7 @@ class PlayerUserType extends PlayerType {
     constructor(akvOptionsIn: OnlyRequired<MyPlayerUserOptions, "context">) {
         const akvDefaults: OnlyOptional<MyPlayerUserOptions, "context"> = {
             x: 280,
-            y: 100, // <----- Pozycja gracza na planszy
+            y: 180, // <----- Pozycja gracza na planszy
             nWidth: 72,
             nHeight: 67,
             bFlipH: false
