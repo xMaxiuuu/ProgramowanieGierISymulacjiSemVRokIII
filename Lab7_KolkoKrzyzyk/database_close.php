@@ -1,3 +1,4 @@
-<?php if ($myMysqli){
+<?php
+if ($myMysqli) {
     $myMysqli->close();
 }

@@ -7,7 +7,7 @@ function onReady() {
         aInfoRoundUser = document.getElementById("idRoundUser"),
         aInfoWinner = document.getElementById("idWinner"),
         aInfoNumPlayers = document.getElementById("idNumPlayers"),
-        aButtonStart = document.getElementById("idButtonStart"),
+        aButtonStart = document.getElementById("id_Button_Start"),
         aBoard = document.getElementById("idGameBoard");
 
     let ahTimer = null;
@@ -53,13 +53,13 @@ function onReady() {
         }
     }
 
-    const aBoardCollapse = bootstrap.Collapse.getOrCreateInstance(aBoard, { toggle: false })
+    const aBoardCollapse = bootstrap.Collapse.getOrCreateInstance(aBoard, { toggle: false });
 
-    const aCells = document.getElementsByTagName("td")
+    const aCells = document.getElementsByTagName("td");
 
     for (const aCell of aCells) {
         aCell.onclick = (event) => {
-            updateGameState(Number(event.target.dataset.cellIndex))
+            updateGameState(Number(event.target.dataset.cellindex))
         }
     }
 
@@ -94,7 +94,7 @@ function onReady() {
             NumUsers: astrNumUsers,
             Board: astrBoard,
             RoundUser: astrRoundUser,
-            Winner: astrWinner // <---- ??
+            Winner: astrWinner
         } = aResponse,
             anNumUsers = Number(astrNumUsers),
             anRoundUser = Number(astrRoundUser);
@@ -154,7 +154,7 @@ function onReady() {
 
             if (9 === n) {   
                 
-                for(let i =0; i < n; ++i){
+                for(let i = 0; i < n; ++i){
                     const anState = Number(avCellsState[i]),
                         aCell = document.getElementById("idCell" + i)
 
@@ -167,7 +167,7 @@ function onReady() {
                             ++anCountFields
                             aCell.classList.remove("text-bg-danger")
                             aCell.classList.add("text-bg-primary")
-                                break
+                            break
                         case 2:
                             ++anCountFields
                             aCell.classList.remove("text-bg-primary")
@@ -179,7 +179,7 @@ function onReady() {
         }
 
 
-        if (("UserA" == astrWeAreUserX) || ("UserB" == astrWeAreUserX)){
+        if (("UserA" == astrWeAreUserX) || ("UserB" == astrWeAreUserX)) {   //
             if(("string" === typeof astrWinner) && (0 < astrWinner.length)) {
                 stopGame()
 
@@ -196,12 +196,13 @@ function onReady() {
 
     function onReadyStateChange() {
         if (XMLHttpRequest.DONE === this.onReadyState && 200 === this.status) {
-            handleServerResponse(this.aResponse)
+            handleServerResponse(this.response)
         }
     }
 
     function runXHR(astrURL, anCellIndex_Click){
         const aXHR = new window.XMLHttpRequest();
+
         aXHR.onreadystatechange = onReadyStateChange
 
         if("number" ===typeof anCellIndex_Click){
@@ -214,7 +215,7 @@ function onReady() {
     }
 
     function updateGameState(anCellIndex_Click){
-        runXHR("getGameState.php", anCellIndex_Click)
+        runXHR("/getGameState.php", anCellIndex_Click)
     }
 }
 

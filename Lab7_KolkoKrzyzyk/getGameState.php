@@ -1,5 +1,7 @@
 <?php
-include_once(__DIR__ . 'database.php');
+
+include_once(__DIR__ . '/database.php');
+
 
 $anInactiveUserDuration = 5;
 
@@ -23,6 +25,7 @@ if (is_array($aRow)) {
         $abIsUserA = TRUE;
     }
 }
+
 // Exists UserB?
 $astrQuery = 'SELECT COUNT(*) AS IsUser FROM Game WHERE UserB IS NOT NULL LIMIT 1';
 $aResult = sendQuery();

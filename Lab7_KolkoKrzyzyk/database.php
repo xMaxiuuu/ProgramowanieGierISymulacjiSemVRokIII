@@ -1,4 +1,5 @@
 <?php
+
 if (!session_id()) {
     session_start();
 }
@@ -12,12 +13,11 @@ if ($myMysqli->connect_errno) {
 
 function sendQuery()
 {
-    global $myMysqli, $aStrQuery;
-    $aResult = $myMysqli->query($aStrQuery);
+    global $myMysqli, $astrQuery;
+    $aResult = $myMysqli->query($astrQuery);
     if (!$aResult) {
         echo 'Query failed: (' . $myMysqli->errno . ') ' . $myMysqli->error;
         exit;
     }
     return $aResult;
 }
-?>
