@@ -162,7 +162,7 @@ function onReady() {
                     switch(anState){
                         default:
                         case 0:
-                            aCell.classList.remove("texy-bg-danger", "text-bg-primary")
+                            aCell.classList.remove("text-bg-danger", "text-bg-primary")
                             break
                         case 1:
                             ++anCountFields
@@ -197,7 +197,7 @@ function onReady() {
     }
 
     function onReadyStateChange() {
-        if (XMLHttpRequest.DONE === this.onReadyState && 200 === this.status) {
+        if (XMLHttpRequest.DONE === this.readyState && 200 === this.status) {
             handleServerResponse(this.response)
         }
     }
