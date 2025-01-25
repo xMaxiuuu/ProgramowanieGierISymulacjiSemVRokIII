@@ -215,7 +215,7 @@ function onReady() {
     }
 
     function updateGameState(anCellIndex_Click){
-        runXHR("/getGameState.php", anCellIndex_Click)
+        runXHR("getGameState.php", anCellIndex_Click)
     }
 }
 

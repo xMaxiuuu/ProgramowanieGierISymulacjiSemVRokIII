@@ -2,5 +2,5 @@
 [Y] kik.html
 [Y] database.php
 [Y] database_close.php
-[N] getGameState.php
+[Y] getGameState.php
 [Y] game.js

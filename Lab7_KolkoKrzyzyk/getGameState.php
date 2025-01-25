@@ -100,7 +100,7 @@ if ((!$abWeAreUserA) && (!$abWeAreUserB)) {
 
 if ($abResetBoard) {
     // To obtain a random integer R in the range i <= R < j, use the expression FLOOR(i + RAND() * (j - i))
-    $astrQuery = 'UPDATE Game SET Board="0,0,0,0,0,0,0,0,0", RoundUser=FLOOR(0 + RAND() * 2)';
+    $astrQuery = 'UPDATE Game SET Board="0,0,0,0,0,0,0,0,0", RoundUser=FLOOR(0 + RAND()*2 )';
     sendQuery();
 }
 
@@ -125,7 +125,7 @@ if ($abIsUserA && $abIsUserB && ($abWeAreUserA || $abWeAreUserB)) {
                 $anCellIndex_Click = (int) $_REQUEST['CellIndex_Click'];
 
                 if ((0 > $anCellIndex_Click) || (8 < $anCellIndex_Click)) {
-                    echo 'Invalid $anCellIndex_Click - ' . $anCellIndex_Click;
+                    echo 'Invalid $anCellIndex_Click=' . $anCellIndex_Click;
                     exit;
                 }
 
@@ -152,7 +152,7 @@ if ($abIsUserA && $abIsUserB && ($abWeAreUserA || $abWeAreUserB)) {
             }
 
             // Check if anyone won
-            $avCheck = [
+            $avvCheck = [
                 [0, 1, 2],
                 [3, 4, 5],
                 [6, 7, 8],
@@ -162,7 +162,7 @@ if ($abIsUserA && $abIsUserB && ($abWeAreUserA || $abWeAreUserB)) {
                 [0, 4, 8],
                 [6, 4, 2]
             ];
-            foreach ($avCheck as $avCheck) {
+            foreach ($avvCheck as $avCheck) {
                 if (('1' == $avBoard[$avCheck[0]]) && ('1' == $avBoard[$avCheck[1]]) && ('1' == $avBoard[$avCheck[2]])) {
                     $abWinnerUserA = TRUE;
                 } else if (('2' == $avBoard[$avCheck[0]]) && ('2' == $avBoard[$avCheck[1]]) && ('2' == $avBoard[$avCheck[2]])) {
@@ -173,7 +173,7 @@ if ($abIsUserA && $abIsUserB && ($abWeAreUserA || $abWeAreUserB)) {
     }
 }
 
-include_once(__DIR__ . '/database_close.php');
+include_once(__DIR__ . 'database_close.php');
 
 $anNumUsers = ($abIsUserA ? 1 : 0) + ($abIsUserB ? 1 : 0);
 
