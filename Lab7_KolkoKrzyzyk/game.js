@@ -80,6 +80,7 @@ function onReady() {
     }
 
     function handleServerResponse(aResponse) {
+        
         const aResponseType = typeof aResponse;
         if (("object" !== aResponseType) || (null === aResponse)) {
             return
@@ -189,9 +190,10 @@ function onReady() {
                 stopGame()
 
                 aInfoWinner.innerHTML = "Spróbuj jeszcze raz"
-                aInfoWinner.style.display = "blok"
+                aInfoWinner.style.display = "block"
             }
-        }   
+        } 
+        console.log("Otrzymano odpowiedź z serwera:", aResponse);  
     }
 
     function onReadyStateChange() {
