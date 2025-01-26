@@ -174,7 +174,7 @@ if ($abIsUserA && $abIsUserB && ($abWeAreUserA || $abWeAreUserB)) {
     }
 }
 
-include_once(__DIR__ . '/database_close.php');
+include_once(__DIR__ . 'database_close.php');
 
 $anNumUsers = ($abIsUserA ? 1 : 0) + ($abIsUserB ? 1 : 0);
 
