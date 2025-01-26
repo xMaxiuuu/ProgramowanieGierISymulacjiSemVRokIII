@@ -1,6 +1,8 @@
+SPRAWDZAM TO KURESTWO PO RAZ 50
+
 [Y] MySQL
-[Y] kik.html
+[Y] kik.html - 99%
 [Y] database.php
 [Y] database_close.php
-[Y] getGameState.php
-[Y] game.js
+[ ] getGameState.php
+[Y] game.js - 100%

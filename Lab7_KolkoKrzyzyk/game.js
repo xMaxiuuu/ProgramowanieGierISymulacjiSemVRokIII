@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", onReady)
 
 function onReady() {
+
     const 
         aInfoFull = document.getElementById("idFull"),
         aInfoUser = document.getElementById("idUser"),
@@ -52,7 +53,6 @@ function onReady() {
             stopGame()
         }
     }
-
     const aBoardCollapse = bootstrap.Collapse.getOrCreateInstance(aBoard, { toggle: false });
 
     const aCells = document.getElementsByTagName("td");
@@ -80,12 +80,10 @@ function onReady() {
     }
 
     function handleServerResponse(aResponse) {
-        
         const aResponseType = typeof aResponse;
         if (("object" !== aResponseType) || (null === aResponse)) {
             return
         }
-
         if (null === ahTimer) {
             return
         }    
@@ -125,7 +123,6 @@ function onReady() {
                 default:
                     break
             }
-
             aInfoUser.style.display = "inline-block"
 
             if (2 <= anNumUsers) {
@@ -134,6 +131,7 @@ function onReady() {
             }
         }
 
+       
         if(abShowGamePanel){
             showBoard()
         } else {
@@ -179,7 +177,6 @@ function onReady() {
             }    
         }
 
-
         if (("UserA" == astrWeAreUserX) || ("UserB" == astrWeAreUserX)) {   //
             if(("string" === typeof astrWinner) && (0 < astrWinner.length)) {
                 stopGame()
@@ -187,6 +184,7 @@ function onReady() {
                 aInfoWinner.innerHTML = `Zwycięzca ${astrWinner}`
                 aInfoWinner.style.display = "block"
             } else if (9 <= anCountFields){
+
                 stopGame()
 
                 aInfoWinner.innerHTML = "Spróbuj jeszcze raz"
@@ -217,9 +215,6 @@ function onReady() {
     }
 
     function updateGameState(anCellIndex_Click){
-        runXHR("getGameState.php", anCellIndex_Click)
+        runXHR("php/getGameState.php", anCellIndex_Click)
     }
 }
-
-
-

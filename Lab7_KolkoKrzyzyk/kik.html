@@ -8,25 +8,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     
     <script type="module" src="game.js"></script>
     
     <style>
-        #idGameBoard td{
+        #idGameBoard td {
             min-height: 4em;
             height: 4em;
         }
+
         #idGameBoard td:hover {
             background-color: lightgray;
         }
     </style>
-
 </head>
 
 <div class="container">
-    <h1 class="display-3">Kółko i krzyrzyk</h1>
+    <h1 class="display-3">Kółko i krzyzyk</h1>
     <p class="lead">Zaznacz trzy elementy swoim kolorem</p>
     <hr class="my-4">
     <p>Dołącz do gry</p>
@@ -36,7 +37,8 @@
     </div>
 </div>
 
-<div class="container">
+
+div class="container">
     <div>
         Liczba graczy <span id="idNumPlayers" class="badge text-bg-info">0</span>
         <span id="idFull" class="badge text-bg-danger"></span>
@@ -46,14 +48,16 @@
         Kolej:
         <span id="idRoundUser" class="badge text-bg-success"></span>
     </div>
-    <div id="idWinner" class="alert alert info" role="alert"></div>
+
+    <div id="idWinner" class="alert alert-info" role="alert"></div>
 </div>
-    
+  
+
 <div class="container mt-2">
     <div class="d-flex justify-content-center">
        
-        <div id="idGameBoard" class="collapse" style="width: 512px;max-width: 85%;">
-            <table class="table table-boarded shadow-lg">
+        <div id="idGameBoard" class="collapse" style="width: 512px;max-width: 85%">
+            <table class="table table-bordered shadow-lg">
                 <tbody>
                     <tr>
                         <td id="idCell0" data-cellindex="0"></td>
