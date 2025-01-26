@@ -1,8 +1,0 @@
-SPRAWDZAM TO KURESTWO PO RAZ 50
-
-[Y] MySQL
-[Y] kik.html - 99%
-[Y] database.php
-[Y] database_close.php
-[Y] getGameState.php
-[Y] game.js -0 100%
