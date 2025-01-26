@@ -57,6 +57,7 @@ if ($abIsUserA) {
         }
     }
 }
+
 $abWeAreUserB = FALSE;
 if ((!$abWeAreUserA) && ($abIsUserB)) {
     // We are not UserA
@@ -117,13 +118,13 @@ if ($abIsUserA && $abIsUserB && ($abWeAreUserA || $abWeAreUserB)) {
     if (is_array($aRow)) {
         $astrBoard = $aRow['Board'];
         $anRoundUser = $aRow['RoundUser'];
-        $avBoard = explode(",", $astrBoard);
 
+        $avBoard = explode(",", $astrBoard);
         if (9 == count($avBoard)) {
+
             // Is it our turn and a user selected a cell?
             if (isset($_REQUEST['CellIndex_Click'])) {
                 $anCellIndex_Click = (int) $_REQUEST['CellIndex_Click'];
-
                 if ((0 > $anCellIndex_Click) || (8 < $anCellIndex_Click)) {
                     echo 'Invalid $anCellIndex_Click=' . $anCellIndex_Click;
                     exit;
@@ -173,7 +174,7 @@ if ($abIsUserA && $abIsUserB && ($abWeAreUserA || $abWeAreUserB)) {
     }
 }
 
-include_once(__DIR__ . 'database_close.php');
+include_once(__DIR__ . '/database_close.php');
 
 $anNumUsers = ($abIsUserA ? 1 : 0) + ($abIsUserB ? 1 : 0);
 

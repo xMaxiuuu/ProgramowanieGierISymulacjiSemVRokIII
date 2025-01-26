@@ -4,5 +4,5 @@ SPRAWDZAM TO KURESTWO PO RAZ 50
 [Y] kik.html - 99%
 [Y] database.php
 [Y] database_close.php
-[ ] getGameState.php
-[Y] game.js - 100%
+[Y] getGameState.php
+[Y] game.js -0 100%
