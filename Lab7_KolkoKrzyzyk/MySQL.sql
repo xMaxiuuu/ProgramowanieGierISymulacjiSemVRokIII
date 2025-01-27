@@ -2,8 +2,8 @@ CREATE TABLE Game (
 ID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
 UserA varchar(253) NULL,
 UserB varchar(253) NULL,
-LastActivateA int(1) UNSIGNED NULL,
-LastActivateB int(1) UNSIGNED NULL,
+LastActiveA int(1) UNSIGNED NULL,
+LastActiveB int(1) UNSIGNED NULL,
 Board varchar(30) DEFAULT "0,0,0,0,0,0,0,0,0",
 RoundUser TINYINT(1) UNSIGNED DEFAULT 0 
 );
